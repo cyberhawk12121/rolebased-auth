@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField, UserCreationForm
-from .models import CustomUser
+from .models import CustomUser, Doctor
 from django.db import transaction
  
 
@@ -18,9 +18,9 @@ class DoctorRegisterForm(UserCreationForm):
         user = super().save(commit=False)
         user.is_doctor = True
         user.save()
-        doctor = CustomUser.objects.create(user=user)
-        doctor.name.add(*self.cleaned_data.get('name'))
-        doctor.name.add(*self.cleaned_data.get('speciality'))
+        doctor = Doctor.objects.create(user=user)
+        # doctor.name.add(*self.cleaned_data.get('name'))
+        # doctor.speciality.add(*self.cleaned_data.get('speciality'))
         user.is_superuser= True
         user.admin= True
         user.is_staff= True

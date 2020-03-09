@@ -66,8 +66,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_doctor = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
-    staff = models.BooleanField(default=False) # a admin user; non super-user
-    admin = models.BooleanField(default=False) # a superuser
+    staff = models.BooleanField(default=True) # a admin user; non super-user
+    admin = models.BooleanField(default=True) # a superuser
     
     
     def has_perm(self, perm, obj=None):
@@ -79,11 +79,25 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         "Does the user have permissions to view the app `app_label`?"
         # Simplest possible answer: Yes, always
         return True
+    @property
+    def is_staff(self):
+        "Is the user a member of staff?"
+        return self.staff
+    @property
+    def is_active(self):
+        "Is the user active?"
+        return self.active
+    @property
+    def is_admin(self):
+        "Is the user a admin member?"
+        return self.admin
+
+
 
 class Doctor(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
-    name = models.CharField(max_length= 299)
-    speciality= models.CharField(max_length=122)
+    name = models.CharField(max_length= 299, default=' ')
+    speciality= models.CharField(max_length=122, default= 'surgeon')
     class Meta:
         verbose_name = _('Doctor')
         verbose_name_plural = _('Doctor')

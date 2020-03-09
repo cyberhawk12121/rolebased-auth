@@ -65,8 +65,8 @@ class Doctor_registration(TemplateView):
         if request.POST:
             form = DoctorRegisterForm(request.POST)
             if form.is_valid():
-                instance= form.save(commit=False)
-                instance.save()
+                # instance= form.save(commit=False)
+                form.save()
                 email = form.cleaned_data.get('email')
                 password = form.cleaned_data.get('password2')
                 user = authenticate(email=email ,password=password) #django built in authentication
@@ -102,8 +102,8 @@ class Patient_registration(TemplateView):
         if request.POST:
             form = PatientRegisterForm(request.POST)
             if form.is_valid():
-                instance= form.save(commit=False)
-                instance.save()
+                # instance= form.save(commit=False)
+                form.save()
                 email = form.cleaned_data.get('email')
                 password = form.cleaned_data.get('password2')
                 user = authenticate(email=email ,password=password) #django built in authentication
