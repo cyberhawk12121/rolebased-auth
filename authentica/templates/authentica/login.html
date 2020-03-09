@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Login</title>
+    <style>
+    .form_input{
+        display: block;
+        width: 40%;
+        padding: 5px;
+        border-radius: 5px;
+        /* margin: 0 auto; */
+    }
+    .button{
+        margin-top: 20px;
+        width: 40%; 
+        border-radius: 10px;
+        padding:5px;border-style: none; 
+        border: 1px solid white; 
+        background-color: rgb(199, 255, 116);
+    }
+    .form-field{
+        margin: 0 auto;
+        padding: 30px;
+        background-color: rgb(197, 197, 197);
+        width:90%;
+        padding-left: 5%;
+        
+    }
+    li{
+        margin-right: 5px;
+    }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="btn btn-primary" href="{% url 'home' %}">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="btn btn-primary active" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary active" href="{% url 'doctor-register' %}">Doctor Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary" href="{% url 'patient-register' %}">Patient Register</a>
+            </li>
+        </ul>
+    </nav>
+<br><br><br>
+
+    <form style="margin: 20px; padding: 20px;" method="POST" class="structure form-group">
+        {% csrf_token %}
+        <fieldset class="form-field">
+            <h2><u>LOGIN</u> </h2><br>
+            {{ form.as_p }}
+            <input class="button" type="submit" name="Save" value="Login">
+        </fieldset>
+    </form>
+</body>
+</html>

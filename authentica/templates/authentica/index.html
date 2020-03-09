@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        li{
+            margin-right: 10px;
+        }
+    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></head>
+<body>
+      
+    <nav class="navbar navbar-expand-sm bg-dark">
+        <ul class="navbar-nav navbar-right">
+
+            <li class="nav-item active">
+                <a class="btn btn-primary active" href="#">Home</a>
+            </li>
+
+          <li class="nav-item">
+            <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class=" btn btn-primary" href="{% url 'doctor-register' %}">Doctor Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="{% url 'patient-register' %}">Patient Register</a>
+        </li>
+        
+        </ul>
+      </nav>
+    <br><br>
+    
+  <h1 class="jumbotron">A website to manage Doctors and Patients Record</h1>
+    
+</body>
+</html>
